@@ -2,16 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: kien242
-      url-base: https://github.com/kien242
-    - name: zmkfirmware-infused-kim
-      url-base: https://github.com/infused-kim
+    - name : hidergo
+      url-base : https://github.com/hidergo
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
-      # remote: zmkfirmware-infused-kim
-      # revision: my-changes/oled-ext-pwr
+      remote: hidergo
+      revision: boardpilot
       import: app/west.yml
   self:
     path: config

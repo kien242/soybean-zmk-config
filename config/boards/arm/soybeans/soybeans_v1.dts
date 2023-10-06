@@ -8,12 +8,16 @@
 #include "soybeans.dtsi"
 #include <dt-bindings/led/led.h>
 
+#include "soybeans_v1-pinctrl.dtsi"
 
 / {
 	chosen {
 		zmk,kscan = &kscan0;
 		zmk,matrix_transform = &default_transform;
 		zmk,underglow = &led_strip;
+		zmk,battery = &vbatt;
+
+
 	};
 
 	sensors {
@@ -102,31 +106,29 @@
 };
 
 &i2c0 {
- 	sda-pin = <13>;
-	scl-pin = <14>;
+	status = "okay";
 
-	oled: ssd1306@3c {
-		compatible = "solomon,ssd1306fb";
-		reg = <0x3c>;
-		label = "SSD1306";
-		width = <128>;
-		height = <32>;
-		segment-offset = <0>;
-		page-offset = <0>;
-		display-offset = <0>;
-		multiplex-ratio = <31>;
-		com-invdir;
-		segment-remap;
-		com-sequential;
-		prechargep = <0x22>;
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        label = "DISPLAY";
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        com-sequential;
+        prechargep = <0x22>;
 	};
  };
 
-&spi1 {
-	mosi-pin = <4>;
-	// Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
-	sck-pin = <6>;
-	miso-pin = <8>;
+&spi3 {
+	status = "okay";
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-names = "default";
 
 	led_strip: ws2812@0 {
 		compatible = "worldsemi,ws2812-spi";
