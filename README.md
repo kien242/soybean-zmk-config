@@ -1,1 +1,1 @@
-# soybean-zmk-config
+# zml-config-peach-rev1-keyboard
