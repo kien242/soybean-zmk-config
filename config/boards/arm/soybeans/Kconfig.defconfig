@@ -28,7 +28,7 @@ config SSD1306_REVERSE_MODE
 	default y
 
 
-config LV_z_VDB_SIZE
+config LV_Z_VDB_SIZE
 	default 64
 
 config LV_Z_DPI
